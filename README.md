@@ -1,14 +1,15 @@
 ## fontello_rails_converter
 
+- Fixes some thing related to Rails 7.0
+
 [![Build Status](https://travis-ci.org/railslove/fontello_rails_converter.png?branch=master)](https://travis-ci.org/railslove/fontello_rails_converter)
 
 CLI gem for comfortably working with icon fonts from [http://fontello.com](http://fontello.com) for usage in Rails apps.
 
 Main features:
 
-* **Open** up your current fontello font in the browser from the command line
-* **Copy & convert** files from the zip into rails app (inclusively [Sass enhancements](#sass-enhacements))
-
+- **Open** up your current fontello font in the browser from the command line
+- **Copy & convert** files from the zip into rails app (inclusively [Sass enhancements](#sass-enhacements))
 
 ## Initial usage
 
@@ -32,7 +33,6 @@ To use your font in your app you will need to `@import` the main stylesheet `ven
 
 You can check if the icon font is working correctly by visiting [http://localhost:3000/fontello-demo.html](http://localhost:3000/fontello-demo.html).
 
-
 ## Updating your existing fontello font
 
 When you want to add new icons to your existing fontello font you can open it in the browser by using `fontello open` and select all the additional icons you want to add.
@@ -43,7 +43,7 @@ Alternatively, you can download & save the `.zip` file just like in the initial 
 
 ## Options
 
-* `--webpack` [command: `convert`]: generate the stylesheets for use with webpack, prefixing the font file names with the tilde (~). Es: `src: url('~fontello.eot?99999999');`. See [Webpack](#webpack).
+- `--webpack` [command: `convert`]: generate the stylesheets for use with webpack, prefixing the font file names with the tilde (~). Es: `src: url('~fontello.eot?99999999');`. See [Webpack](#webpack).
 
 ## More help
 
@@ -53,8 +53,8 @@ For more help run `fontello --help`
 
 The conversion process will do a couple of things to make working with the main fontello stylesheet easier in Rails/Sass:
 
-* It will convert font paths to use `font-url` (unless you use the `--webpack` option)
-* It will create [Sass placeholder selectors](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_) (e.g. `%icon-foo` for all the icons) so you have the choice to use the CSS classes in your markup or to `@extend` the placeholders in your Sass code
+- It will convert font paths to use `font-url` (unless you use the `--webpack` option)
+- It will create [Sass placeholder selectors](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_) (e.g. `%icon-foo` for all the icons) so you have the choice to use the CSS classes in your markup or to `@extend` the placeholders in your Sass code
 
 ## Webpack
 
@@ -62,7 +62,7 @@ You can convert the fontello stylesheets for use with Webpack instead of Sprocke
 
 If you have not alreday done it, you must
 
-* add the vendor paths to the resolve roots of Webpack
+- add the vendor paths to the resolve roots of Webpack
 
 ```javascript
 [...]
@@ -82,7 +82,7 @@ module.exports = {
 
 ```
 
-* add optional parameters to the `test` key for the loader of the fonts files
+- add optional parameters to the `test` key for the loader of the fonts files
 
 ```javascript
 test: /\.(png|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
@@ -92,12 +92,12 @@ test: /\.(png|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
 
 #### Additional fontello stylesheets
 
-Besides the main stylesheet (`fontname.css.scss`) fontello also provides a couple of additional stylesheets that you might want to `@import` in your app for special use cases:  `fontname-ie7-codes.css.scss`, `fontname-embedded.css.scss`, `animation.css.scss`, `fontname-ie7.css.scss`, `fontname-codes.css.scss`
+Besides the main stylesheet (`fontname.css.scss`) fontello also provides a couple of additional stylesheets that you might want to `@import` in your app for special use cases: `fontname-ie7-codes.css.scss`, `fontname-embedded.css.scss`, `animation.css.scss`, `fontname-ie7.css.scss`, `fontname-codes.css.scss`
 
 #### Gemfile environment
 
-If you don't want to load this gem in your app's production environment to save a tiny bit of memory, you can also just add it to the `:development` group in your Gemfile.  The only thing you might need to change is to tell rails to add `vendor/assets/fonts` to the precompile load paths see: https://github.com/railslove/fontello_rails_converter/blob/master/lib/fontello_rails_converter/railtie.rb
+If you don't want to load this gem in your app's production environment to save a tiny bit of memory, you can also just add it to the `:development` group in your Gemfile. The only thing you might need to change is to tell rails to add `vendor/assets/fonts` to the precompile load paths see: https://github.com/railslove/fontello_rails_converter/blob/master/lib/fontello_rails_converter/railtie.rb
 
 #### Configuration file
 
-By default the gem will look in `Rails.root.join("config", "fontello_rails_converter.yml")` for configuration options.  You can use this to set default options for the tool.
+By default the gem will look in `Rails.root.join("config", "fontello_rails_converter.yml")` for configuration options. You can use this to set default options for the tool.
